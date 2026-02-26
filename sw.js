@@ -1,16 +1,17 @@
 const CACHE_NAME = 'banf-pwa-v1';
+const BASE = self.registration.scope;
 const STATIC_ASSETS = [
-  '/',
-  '/index.html',
-  '/css/app.css',
-  '/js/app.js',
-  '/js/api.js',
-  '/js/router.js',
-  '/js/radio.js',
-  '/js/pages.js',
-  '/manifest.json',
-  '/icons/icon-192.png',
-  '/icons/icon-512.png'
+  BASE,
+  BASE + 'index.html',
+  BASE + 'css/app.css',
+  BASE + 'js/app.js',
+  BASE + 'js/api.js',
+  BASE + 'js/router.js',
+  BASE + 'js/radio.js',
+  BASE + 'js/pages.js',
+  BASE + 'manifest.json',
+  BASE + 'icons/icon-192x192.png',
+  BASE + 'icons/icon-512x512.png'
 ];
 
 // Install - cache static assets
@@ -64,10 +65,10 @@ self.addEventListener('push', event => {
   const title = data.title || 'BANF';
   const options = {
     body: data.body || 'New update from BANF',
-    icon: '/icons/icon-192.png',
-    badge: '/icons/icon-72.png',
+    icon: 'icons/icon-192x192.png',
+    badge: 'icons/icon-72x72.png',
     tag: data.tag || 'banf-notification',
-    data: { url: data.url || '/' }
+    data: { url: data.url || './' }
   };
   event.waitUntil(self.registration.showNotification(title, options));
 });
