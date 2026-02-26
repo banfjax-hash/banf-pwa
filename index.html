@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#1B5E20">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="BANF">
+  <meta name="description" content="Bengali Association of North Florida - Community App">
+  <title>BANF</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="icon" type="image/png" href="icons/icon-96.png">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Round">
+</head>
+<body>
+  <div id="app">
+    <main id="page-content"></main>
+
+    <!-- Bottom Navigation -->
+    <nav id="bottom-nav">
+      <button class="nav-btn active" data-route="home">
+        <span class="material-icons-round">home</span>
+        <span class="nav-label">Home</span>
+      </button>
+      <button class="nav-btn" data-route="events">
+        <span class="material-icons-round">event</span>
+        <span class="nav-label">Events</span>
+      </button>
+      <button class="nav-btn" data-route="radio">
+        <span class="material-icons-round">radio</span>
+        <span class="nav-label">Radio</span>
+      </button>
+      <button class="nav-btn" data-route="magazine">
+        <span class="material-icons-round">menu_book</span>
+        <span class="nav-label">Magazine</span>
+      </button>
+      <button class="nav-btn" data-route="more">
+        <span class="material-icons-round">more_horiz</span>
+        <span class="nav-label">More</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Radio mini-player (persistent) -->
+  <div id="radio-mini" class="hidden">
+    <div class="mini-info">
+      <span class="mini-pulse"></span>
+      <span class="mini-title">BANF Radio</span>
+    </div>
+    <button id="mini-play-btn" class="mini-ctrl">
+      <span class="material-icons-round">play_arrow</span>
+    </button>
+  </div>
+
+  <!-- Install prompt -->
+  <div id="install-banner" class="hidden">
+    <div class="install-content">
+      <span class="material-icons-round">download</span>
+      <div>
+        <strong>Install BANF App</strong>
+        <small>Add to home screen for the best experience</small>
+      </div>
+    </div>
+    <div class="install-actions">
+      <button id="install-dismiss">Later</button>
+      <button id="install-accept" class="btn-primary-sm">Install</button>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/radio.js"></script>
+  <script src="js/pages.js"></script>
+  <script src="js/router.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
