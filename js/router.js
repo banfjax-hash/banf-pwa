@@ -20,12 +20,13 @@ const Router = (() => {
       btn.classList.toggle('active', btn.dataset.route === name);
     });
 
-    // Hide bottom nav on detail pages
+    // Hide bottom nav on detail pages (only on mobile)
     const nav = document.getElementById('bottom-nav');
     const detailPages = ['event-detail', 'magazine-detail', 'sponsors', 'volunteers', 'login', 'settings', 'contact', 'about'];
     const isDetail = detailPages.includes(name);
+    const isDesktop = window.innerWidth >= 1024;
     if (nav) {
-      nav.style.display = isDetail ? 'none' : '';
+      nav.style.display = (isDetail && !isDesktop) ? 'none' : '';
     }
 
     // Update page content padding for detail pages

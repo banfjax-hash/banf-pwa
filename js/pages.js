@@ -44,6 +44,30 @@ function renderHome(container) {
     <div id="home-events"><div class="loading"><div class="spinner"></div></div></div>
 
     <div id="home-sponsors"></div>
+
+    <!-- Quick Links Section (same on all devices) -->
+    <div class="section-header mt-16">
+      <h2>Quick Links</h2>
+    </div>
+    <div class="quick-links-grid">
+      <div class="quick-link-card" onclick="window.open('https://www.jaxbengali.org','_blank')">
+        <span class="material-icons-round" style="color:#1565C0">language</span>
+        <span>Website</span>
+      </div>
+      <div class="quick-link-card" onclick="Router.navigate('contact')">
+        <span class="material-icons-round" style="color:#00695C">email</span>
+        <span>Contact</span>
+      </div>
+      <div class="quick-link-card" onclick="Router.navigate('about')">
+        <span class="material-icons-round" style="color:#E65100">info</span>
+        <span>About</span>
+      </div>
+      <div class="quick-link-card" onclick="Router.navigate('volunteers')">
+        <span class="material-icons-round" style="color:#C62828">favorite</span>
+        <span>Volunteer</span>
+      </div>
+    </div>
+
     <div style="height:24px"></div>
   `;
 
@@ -66,7 +90,12 @@ async function loadHomeData() {
       if (events.length === 0) {
         eventsEl.innerHTML = '<div class="empty-state"><span class="material-icons-round">event</span><p>No upcoming events. Stay tuned!</p></div>';
       } else {
-        eventsEl.innerHTML = events.slice(0, 3).map(e => eventCardHTML(e)).join('');
+        // Use responsive grid wrapper
+        const isWide = window.innerWidth >= 768;
+        const cards = events.slice(0, isWide ? 4 : 3).map(e => eventCardHTML(e)).join('');
+        eventsEl.innerHTML = isWide
+          ? `<div class="home-events-grid">${cards}</div>`
+          : cards;
       }
     }
 
